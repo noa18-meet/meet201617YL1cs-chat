@@ -1,18 +1,45 @@
 #2016-2017 PERSONAL PROJECTS: TurtleChat!
-#WRITE YOUR NAME HERE!
+#noa
 
 #####################################################################################
 #                                   IMPORTS                                         #
 #####################################################################################
 #import the turtle module
+import turtle
 #import the Client class from the turtle_chat_client module
+from turtle_chat_client import Client
 #Finally, from the turtle_chat_widgets module, import two classes: Button and TextInput
+from turtle_chat_widgets import Button, TextInput
 #####################################################################################
 #####################################################################################
 
 #####################################################################################
 #                                   TextBox                                         #
 #####################################################################################
+class TextBox(TextInput):
+    def draw_box(self):
+        noa_turtle = self.writer
+        noa_turtle.penup()
+        noa_turtle.goto(0,0)
+        noa_turtle.pendown()
+        noa_turtle.goto(200,0)
+        noa_turtle.goto(200,100)
+        noa_turtle.goto(0,100)
+        noa_turtle.goto(0,0)
+        print(self.width)
+        print("hi")
+    def write_msg(self):
+        noa_turtle = self.writer
+        noa_turtle.penup()
+        noa_turtle.goto(100,50)
+        noa_turtle.pendown()
+        noa_turtle.write("noa")
+        print("hello")
+
+a=TextBox(width=60)
+a.draw_box()
+a.write_msg()
+    
 #Make a class called TextBox, which will be a subclass of TextInput.
 #Because TextInput is an abstract class, you must implement its abstract
 #methods.  There are two:
@@ -41,6 +68,8 @@
 #####################################################################################
 #                                  SendButton                                       #
 #####################################################################################
+class SendButton(Button): i stopped here !!
+    
 #Make a class called SendButton, which will be a subclass of Button.
 #Button is an abstract class with one abstract method: fun.
 #fun gets called whenever the button is clicked.  It's jobs will be to
@@ -174,17 +203,19 @@ class View:
 #it once you have a working view, trying to run you chat#
 #view in different ways.                                #
 #########################################################
-if __name__ == '__main__':
-    my_view=View()
-    _WAIT_TIME=200 #Time between check for new message, ms
-    def check() :
-        msg_in=my_view.my_client.receive()
-        if not(msg_in is None):
-            if msg_in==my_view.my_client._END_MSG:
-                print('End message received')
-                sys.exit()
-            else:
-                my_view.msg_received(msg_in)
-        turtle.ontimer(check,_WAIT_TIME) #Check recursively
-    check()
-    turtle.mainloop()
+
+# Noa commented the following lines for her tests with Textbox
+##if __name__ == '__main__':
+##    my_view=View()
+##    _WAIT_TIME=200 #Time between check for new message, ms
+##    def check() :
+##        msg_in=my_view.my_client.receive()
+##        if not(msg_in is None):
+##            if msg_in==my_view.my_client._END_MSG:
+##                print('End message received')
+##                sys.exit()
+##            else:
+##                my_view.msg_received(msg_in)
+##        turtle.ontimer(check,_WAIT_TIME) #Check recursively
+##    check()
+##    turtle.mainloop()
