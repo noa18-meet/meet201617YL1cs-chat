@@ -18,25 +18,30 @@ from turtle_chat_widgets import Button, TextInput
 #####################################################################################
 class TextBox(TextInput):
     def draw_box(self):
-        noa_turtle = self.writer
-        noa_turtle.penup()
-        noa_turtle.goto(0,0)
-        noa_turtle.pendown()
-        noa_turtle.goto(200,0)
-        noa_turtle.goto(200,100)
-        noa_turtle.goto(0,100)
-        noa_turtle.goto(0,0)
-        print(self.width)
-        print("hi")
-    def write_msg(self):
-        noa_turtle = self.writer
-        noa_turtle.penup()
-        noa_turtle.goto(100,50)
-        noa_turtle.pendown()
-        noa_turtle.write("noa")
-        print("hello")
+        self.pos=(-200,-200)
+        turtle.hideturtle()
+        self.writer=turtle.clone()
+        self.writer.penup()
+        self.writer.goto(self.pos)
+        self.writer.pendown()
+        self.writer.goto(self.width,-200)
+        self.writer.goto(self.width,self.height)
+        self.writer.goto(-200,self.height)
+        self.writer.goto(self.pos)
+        self.writer.penup()
+        
 
-a=TextBox(width=60)
+      
+        
+    def write_msg(self):
+        self.writer.penup()
+        self.writer.goto(-180,80)
+        self.writer.clear()
+        self.writer.write(self.new_msg)
+
+
+        
+a=TextBox()
 a.draw_box()
 a.write_msg()
     
@@ -68,7 +73,8 @@ a.write_msg()
 #####################################################################################
 #                                  SendButton                                       #
 #####################################################################################
-class SendButton(Button): 
+class SendButton(Button):
+    pass
     
 #Make a class called SendButton, which will be a subclass of Button.
 #Button is an abstract class with one abstract method: fun.
@@ -94,7 +100,7 @@ class SendButton(Button):
 #
 #Read the comments below for hints and directions.
 ##################################################################
-##################################################################
+
 class View:
     _MSG_LOG_LENGTH=5 #Number of messages to retain in view
     _SCREEN_WIDTH=300
