@@ -68,7 +68,7 @@ a.write_msg()
 #####################################################################################
 #                                  SendButton                                       #
 #####################################################################################
-class SendButton(Button): i stopped here !!
+class SendButton(Button): 
     
 #Make a class called SendButton, which will be a subclass of Button.
 #Button is an abstract class with one abstract method: fun.
