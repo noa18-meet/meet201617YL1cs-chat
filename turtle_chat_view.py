@@ -38,7 +38,7 @@ class TextBox(TextInput):
         self.writer.goto(-180,80)
         self.writer.clear()
         self.writer.write(self.new_msg)
-
+        
 
         
 a=TextBox()
@@ -51,6 +51,9 @@ a.write_msg()
 #
 #draw_box
 #write_msg
+
+
+# 'egvefc' + '\r'
 #
 #Hints:
 #1. in draw_box, you will draw (or stamp) the space on which the user's input
@@ -75,7 +78,7 @@ a.write_msg()
 #####################################################################################
 class SendButton(Button):
     pass
-    
+ 
 #Make a class called SendButton, which will be a subclass of Button.
 #Button is an abstract class with one abstract method: fun.
 #fun gets called whenever the button is clicked.  It's jobs will be to
