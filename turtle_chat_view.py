@@ -18,15 +18,15 @@ from turtle_chat_widgets import Button, TextInput
 #####################################################################################
 class TextBox(TextInput):
     def draw_box(self):
-        self.pos=(-200,-200)
+        self.pos=(self.width/2,0)
         turtle.hideturtle()
         self.writer=turtle.clone()
         self.writer.penup()
         self.writer.goto(self.pos)
         self.writer.pendown()
-        self.writer.goto(self.width,-200)
-        self.writer.goto(self.width,self.height)
-        self.writer.goto(-200,self.height)
+        self.writer.goto(self.width/2,self.height)
+        self.writer.goto(-self.width/2,self.height)
+        self.writer.goto(-self.width/2,0)
         self.writer.goto(self.pos)
         self.writer.penup()
         
@@ -35,10 +35,11 @@ class TextBox(TextInput):
         
     def write_msg(self):
         self.writer.penup()
-        self.writer.goto(-180,80)
+        self.writer.goto((-self.width/2)+10,self.height-20)
         self.writer.clear()
         self.writer.write(self.new_msg)
-        
+        if(self.writer.pos==self.width/2,self.height):
+            turtle.goto(0,0)
 
         
 a=TextBox()
@@ -119,7 +120,7 @@ class View:
     def __init__(self,username='Me',partner_name='Partner'):
         self.username=username
         self.partner_name=partner_name
-        a=client()
+        self.my_client=client()
         
         '''
         :param username: the name of this chat user
@@ -139,6 +140,7 @@ class View:
         #   help(turtle.setup)
         #
         #at the Python shell.
+        
 
         #This list will store all of the messages.
         #You can add strings to the front of the list using
@@ -157,6 +159,8 @@ class View:
         #Create a TextBox instance and a SendButton instance and
         #Store them inside of this instance
         ###
+        self.my_textbox=TextBox()
+        self.my_sendbutton=SendButton()
 
         ###
         #Call your setup_listeners() function, if you have one,
