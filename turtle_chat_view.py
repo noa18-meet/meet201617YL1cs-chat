@@ -77,7 +77,13 @@ a.write_msg()
 #                                  SendButton                                       #
 #####################################################################################
 class SendButton(Button):
-    pass
+    def __init__(self,view, my_turtle=None,shape=None,pos=(0,0)):
+        self.view=view
+        super (SendBotton,self).__init__(my_turtle,shape,pos)
+    def fun(self,x=None,y=None):
+        self.view.send_msg()
+        print ("hello world")
+        
  
 #Make a class called SendButton, which will be a subclass of Button.
 #Button is an abstract class with one abstract method: fun.
@@ -111,6 +117,10 @@ class View:
     _LINE_SPACING=round(_SCREEN_HEIGHT/2/(_MSG_LOG_LENGTH+1))
 
     def __init__(self,username='Me',partner_name='Partner'):
+        self.username=username
+        self.partner_name=partner_name
+        a=client()
+        
         '''
         :param username: the name of this chat user
         :param partner_name: the name of the user you are chatting with
