@@ -10,6 +10,7 @@ import turtle
 from turtle_chat_client import Client
 #Finally, from the turtle_chat_widgets module, import two classes: Button and TextInput
 from turtle_chat_widgets import Button, TextInput
+turtle.setup(400,650)
 #####################################################################################
 #####################################################################################
 
@@ -18,15 +19,15 @@ from turtle_chat_widgets import Button, TextInput
 #####################################################################################
 class TextBox(TextInput):
     def draw_box(self):
-        self.pos=(self.width/2,0)
+        self.pos=(self.width/2,-200)
         turtle.hideturtle()
         self.writer=turtle.clone()
         self.writer.penup()
         self.writer.goto(self.pos)
         self.writer.pendown()
-        self.writer.goto(self.width/2,self.height)
-        self.writer.goto(-self.width/2,self.height)
-        self.writer.goto(-self.width/2,0)
+        self.writer.goto(self.width/2,self.height-200)
+        self.writer.goto(-self.width/2,self.height-200)
+        self.writer.goto(-self.width/2,-200)
         self.writer.goto(self.pos)
         self.writer.penup()
         
@@ -35,11 +36,10 @@ class TextBox(TextInput):
         
     def write_msg(self):
         self.writer.penup()
-        self.writer.goto((-self.width/2)+10,self.height-20)
+        self.writer.goto((-self.width/2)+10,self.height-220)
         self.writer.clear()
         self.writer.write(self.new_msg)
-        if(self.writer.pos==self.width/2,self.height):
-            turtle.goto(0,0)
+        
 
         
 a=TextBox()
@@ -140,6 +140,8 @@ class View:
         #   help(turtle.setup)
         #
         #at the Python shell.
+        #did it at the top of the code!!!
+        
         
 
         #This list will store all of the messages.
@@ -166,6 +168,8 @@ class View:
         #Call your setup_listeners() function, if you have one,
         #and any other remaining setup functions you have invented.
         ###
+        setup_listeners()
+
 
     def send_msg(self):
         '''
@@ -241,4 +245,4 @@ class View:
 ##                my_view.msg_received(msg_in)
 ##        turtle.ontimer(check,_WAIT_TIME) #Check recursively
 ##    check()
-##    turtle.mainloop()
+turtle.mainloop()
