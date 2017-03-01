@@ -226,12 +226,15 @@ class View:
 
     def display_msg(self):
         self.noa.penup()
-        self.noa.goto(-50,100)
-        self.noa.write(self.msg_queue)
+        self.noa.goto(-60,100)
+        self.noa.clear()
+        self.noa.write(self.msg_queue[0])
+        
 
         '''
         This method should update the messages displayed in the screen.
-        You can get the messages you want from self.msg_queue
+        You can get the messages you want from
+        self.msg_queue
         '''
     pass
 ##############################################################
