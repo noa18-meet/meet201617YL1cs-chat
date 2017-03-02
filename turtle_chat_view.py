@@ -23,19 +23,22 @@ class TextBox(TextInput):
         self.pos=(self.width/2,-200)
         turtle.hideturtle()
         self.writer=turtle.clone()
+        self.writer.pencolor('white')
+        self.writer.width(7)
         self.writer.penup()
         self.writer.goto(self.pos)
         self.writer.pendown()
         self.writer.goto(self.width/2,self.height-200)
         self.writer.goto(-self.width/2,self.height-200)
         self.writer.goto(-self.width/2,-200)
-        self.writer.goto(self.pos)
+        self.writer.goto(self.pos)      
         self.writer.penup()
         
 
       
         
     def write_msg(self):
+        self.writer.pencolor('black')
         self.writer.penup()
         self.writer.goto((-self.width/2)+10,self.height-220)
         self.writer.clear()
@@ -79,7 +82,9 @@ a.write_msg()
 #                                  SendButton                                       #
 #####################################################################################
 class SendButton(Button):
-    def __init__(self,view, my_turtle=None,shape=None,pos=(0,0)):
+    my_turtle=turtle.clone()
+    def __init__(self,view, my_turtle=my_turtle,shape=None,pos=(0,-250)):
+        self.my_turtle.color('navy blue')
         self.view=view
         super (SendButton,self).__init__(my_turtle,shape,pos)
     def fun(self,x=None,y=None):
